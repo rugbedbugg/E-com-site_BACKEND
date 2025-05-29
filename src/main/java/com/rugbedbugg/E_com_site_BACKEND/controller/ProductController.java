@@ -10,16 +10,19 @@ import java.util.List;
 @RestController
 public class ProductController {
 
-    @Autowired
-    ProductService service;
+    private ProductService service;
 
-    // @RequestMapping("/products", GET)
+    public ProductController(ProductService service) {
+        this.service = service;
+    }
+
+    // @RequestMapping("/products", GET) // RequestMapping is GET request by default
     @GetMapping("/products")
     public List<Product> getProducts() {
         return service.getProducts();
     }
 
-    @GetMapping("/products/{prodID}")
+    @GetMapping("/products/product-ID={prodID}")
     public Product getProductById(@PathVariable int prodID) {
         return service.getProductByID(prodID);
     }
@@ -35,7 +38,7 @@ public class ProductController {
         service.updateProduct(prod);
     }
 
-    @DeleteMapping("/products/{prodID}")
+    @DeleteMapping("/products/product-ID={prodID}")
     public void deleteProduct(@PathVariable int prodID) {
         service.deleteProduct(prodID);
     }

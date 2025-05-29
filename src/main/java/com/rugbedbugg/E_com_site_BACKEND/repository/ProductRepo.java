@@ -1,0 +1,10 @@
+package com.rugbedbugg.E_com_site_BACKEND.repository;
+
+import com.rugbedbugg.E_com_site_BACKEND.model.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProductRepo extends JpaRepository<Product, Integer> {
+
+}
